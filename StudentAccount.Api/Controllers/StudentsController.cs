@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StudentAccount.Model.Student;
+using StudentAccount.Orchestrators.Student.Contract;
 
 namespace StudentAccount.Api.Controllers
 {
@@ -11,11 +14,18 @@ namespace StudentAccount.Api.Controllers
     [Route("students")]
     public class StudentsController : ControllerBase
     {
-       private readonly ILogger<StudentsController> _logger;
+        private readonly IMapper _mapper;
+        private readonly ILogger<StudentsController> _logger;
+        private IStudentOrchestrator _studentOrchestrator;
 
-        public StudentsController(ILogger<StudentsController> logger)
+        public StudentsController(
+            IMapper mapper,
+            ILogger<StudentsController> logger, 
+            IStudentOrchestrator studentOrchestrator)
         {
+            _mapper = mapper;
             _logger = logger;
+            _studentOrchestrator = studentOrchestrator;
         }
 
         [HttpGet]
@@ -31,9 +41,13 @@ namespace StudentAccount.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostASync()
+        public async Task<IActionResult> PostSync(CreateStudent student)
         {
-            return Ok();
+            var model = _mapper.Map<Student>(student);
+
+            var result = await _studentOrchestrator.CreateAsync(model);
+
+            return Ok(result);
         }
 
         [HttpPut]

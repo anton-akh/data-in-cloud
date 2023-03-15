@@ -1,6 +1,12 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StudentAccount.Dal;
+using System;
+using StudentAccount.Dal.Student;
+using StudentAccount.Model.Student;
+using StudentAccount.Orchestrators.Student;
 
 namespace StudentAccount.Api
 {
@@ -9,6 +15,7 @@ namespace StudentAccount.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Configuration.AddJsonFile("appsettings.json", false, true);
 
             // Add services to the container.
 
@@ -16,6 +23,16 @@ namespace StudentAccount.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            
+            // Orchestrators
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddScoped<IStudentOrchestrator, StudentOrchestrator>();
+
+            // Database
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
+
+            builder.Services.AddSqlServer<Dal.AppContext>(builder.Configuration.GetConnectionString("DatabaseConnectionString"));
 
             var app = builder.Build();
 
