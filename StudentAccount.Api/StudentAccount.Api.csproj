@@ -17,6 +17,7 @@
     <ProjectReference Include="..\StudentAccount.Dal\StudentAccount.Dal.csproj" />
     <ProjectReference Include="..\StudentAccount.Model\StudentAccount.Model.csproj" />
     <ProjectReference Include="..\StudentAccount.Orchestrators\StudentAccount.Orchestrators.csproj" />
+    <ProjectReference Include="..\StudentAccount.Platform\StudentAccount.Platform.csproj" />
   </ItemGroup>
 
 </Project>

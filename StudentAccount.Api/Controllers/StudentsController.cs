@@ -11,12 +11,12 @@ using StudentAccount.Orchestrators.Student.Contract;
 namespace StudentAccount.Api.Controllers
 {
     [ApiController]
-    [Route("students")]
+    [Route("api/v1/students")]
     public class StudentsController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly ILogger<StudentsController> _logger;
-        private IStudentOrchestrator _studentOrchestrator;
+        private readonly IStudentOrchestrator _studentOrchestrator;
 
         public StudentsController(
             IMapper mapper,
@@ -31,13 +31,13 @@ namespace StudentAccount.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(new List<WeatherForecast>());
+            return Ok();
         }
 
         [HttpGet("/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok(new List<WeatherForecast>());
+            return Ok();
         }
 
         [HttpPost]
@@ -53,7 +53,6 @@ namespace StudentAccount.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> PutAsync(object model)
         {
-
             return Ok();
         }
 

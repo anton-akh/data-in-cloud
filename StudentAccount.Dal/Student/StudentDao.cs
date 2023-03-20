@@ -7,6 +7,7 @@ namespace StudentAccount.Dal.Student;
 public class StudentDao
 {
     [Column("id"), Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     [Column("first_name")]
     public string FirstName { get; set; }

@@ -5,11 +5,23 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAccount.Api", "StudentAccount.Api\StudentAccount.Api.csproj", "{99E6BDF2-6F16-4ED7-BC26-2D168E30CCA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Dal", "StudentAccount.Dal\StudentAccount.Dal.csproj", "{262478B6-CBF1-434C-AC91-A3E0105C2077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAccount.Dal", "StudentAccount.Dal\StudentAccount.Dal.csproj", "{262478B6-CBF1-434C-AC91-A3E0105C2077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Orchestrators", "StudentAccount.Orchestrators\StudentAccount.Orchestrators.csproj", "{A2149BD8-692C-4D13-BC63-5B867CD805CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAccount.Orchestrators", "StudentAccount.Orchestrators\StudentAccount.Orchestrators.csproj", "{A2149BD8-692C-4D13-BC63-5B867CD805CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Model", "StudentAccount.Model\StudentAccount.Model.csproj", "{C912015D-E59A-4BB3-BFB3-4AACBA3D71DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAccount.Model", "StudentAccount.Model\StudentAccount.Model.csproj", "{C912015D-E59A-4BB3-BFB3-4AACBA3D71DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Platform", "StudentAccount.Platform\StudentAccount.Platform.csproj", "{5D2111EC-7F1A-4428-9657-BB335092FE4A}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "StudentAccount.Database", "StudentAccount.Database\StudentAccount.Database.sqlproj", "{EC272080-3A90-4A02-9577-4EFD56F465C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8D1DB88B-7952-4B2D-B4B6-E96F37DB37E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.IntegrationTests", "StudentAccount.IntegrationTests\StudentAccount.IntegrationTests.csproj", "{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Dal.Tests", "StudentAccount.Dal.Tests\StudentAccount.Dal.Tests.csproj", "{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAccount.Orchestrators.Tests", "StudentAccount.Orchestrators.Tests\StudentAccount.Orchestrators.Tests.csproj", "{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +45,36 @@ Global
 		{C912015D-E59A-4BB3-BFB3-4AACBA3D71DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C912015D-E59A-4BB3-BFB3-4AACBA3D71DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C912015D-E59A-4BB3-BFB3-4AACBA3D71DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D2111EC-7F1A-4428-9657-BB335092FE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D2111EC-7F1A-4428-9657-BB335092FE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D2111EC-7F1A-4428-9657-BB335092FE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D2111EC-7F1A-4428-9657-BB335092FE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC272080-3A90-4A02-9577-4EFD56F465C8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0ACD88B2-4B2E-46AF-82DD-44D430D96FA1} = {8D1DB88B-7952-4B2D-B4B6-E96F37DB37E4}
+		{50BC75D0-B24C-43CF-8D8D-16DF9CAC9068} = {8D1DB88B-7952-4B2D-B4B6-E96F37DB37E4}
+		{EE291EA8-310A-4AB2-95B5-CF8ABE4C6F58} = {8D1DB88B-7952-4B2D-B4B6-E96F37DB37E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBA34D75-796B-4903-81E4-A4711606C03B}
