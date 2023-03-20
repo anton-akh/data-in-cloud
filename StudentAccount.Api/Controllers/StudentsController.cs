@@ -31,13 +31,17 @@ namespace StudentAccount.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok();
+            var students = await _studentOrchestrator.GetAllAsync();
+
+            return Ok(students);
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok();
+            var studentById = await _studentOrchestrator.GetByIdAsync(id);
+
+            return Ok(studentById);
         }
 
         [HttpPost]
@@ -50,16 +54,23 @@ namespace StudentAccount.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> PutAsync(object model)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, EditStudent model)
         {
-            return Ok();
+            var modelToUpdate = _mapper.Map<Student>(model);
+            modelToUpdate.Id = id;
+
+            var entity = await _studentOrchestrator.UpdateAsync(id, modelToUpdate);
+
+            return Ok(entity);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            return Ok();
+            var deletedEntity = await _studentOrchestrator.DeleteAsync(id);
+
+            return Ok(deletedEntity);
         }
     }
 }

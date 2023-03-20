@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StudentAccount.Model\StudentAccount.Model.csproj" />
+    <ProjectReference Include="..\StudentAccount.Platform\StudentAccount.Platform.csproj" />
   </ItemGroup>
 
 </Project>

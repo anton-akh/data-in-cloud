@@ -32,7 +32,19 @@ public class GlobalErrorHandlingMiddleware
     {
         var exceptionResult = JsonSerializer.Serialize(new { error = exception.Message });
         context.Response.ContentType = "application/json";
-        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        switch (exception)
+        {
+            case ResourceNotFoundException:
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    break;
+                }
+            default:
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                break;
+            }
+        }
 
         return context.Response.WriteAsync(exceptionResult);
     }

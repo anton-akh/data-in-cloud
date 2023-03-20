@@ -9,6 +9,7 @@ namespace StudentAccount.Orchestrators
         public OrchestratorProfile()
         {
             CreateMap<CreateStudent, Model.Student.Student>();
+            CreateMap<EditStudent, Model.Student.Student>();
         }
     }
 }
