@@ -1,14 +1,12 @@
-﻿using System;
-using System.Net;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StudentAccount.Dal.Student;
 using StudentAccount.Model.Student;
 using StudentAccount.Orchestrators.Student;
 using StudentAccount.Platform.Exception;
+using System;
 
 namespace StudentAccount.Api;
 
@@ -31,7 +29,7 @@ public class Startup
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddScoped<IStudentOrchestrator, StudentOrchestrator>();
 
-        // Database
+        // Dal
         services.AddScoped<IStudentRepository, StudentRepository>();
         ConfigureDb(services);
     }
