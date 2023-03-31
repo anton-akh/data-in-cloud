@@ -44,13 +44,13 @@ Goal: Build back-end service following Web API best practices with Resource CRUD
 - UT coverage is mandatory
 
 ## Phase_3
+- Build caching mechanism for both of created resources using blob storage
+- UT coverage is mandatory
+
+## Phase_4
 - Build asynchronious CRUD API end points for custom resource
 - Use any DB  type on your choise
 - UT coverage is mandatory 
-
-## Phase_4
-- Build caching mechanism for any of created resources using blob storage
-- UT coverage is mandatory
 
 ## Bonus
 - Build ETL using Azure DataFactory to transform data from Source DB and store modified data set in target DB
