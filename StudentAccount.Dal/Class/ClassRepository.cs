@@ -41,6 +41,8 @@ public class ClassRepository : IClassRepository
 
         await _context.Classes.AddAsync(entity);
 
+        await _context.SaveChangesAsync();
+
         return _mapper.Map<Model.Class.Class>(entity);
     }
 }

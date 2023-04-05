@@ -13,5 +13,6 @@ public class CosmosDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultContainer("Items");
     }
 }
