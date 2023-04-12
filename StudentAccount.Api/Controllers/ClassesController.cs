@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StudentAccount.Model.Class;
-using StudentAccount.Model.Student;
 using StudentAccount.Orchestrators.Class.Contract;
-using StudentAccount.Orchestrators.Student.Contract;
+using System;
+using System.Threading.Tasks;
 
 namespace StudentAccount.Api.Controllers
 {

@@ -9,7 +9,10 @@ using StudentAccount.Platform.Exception;
 using System;
 using StudentAccount.Dal.Class;
 using StudentAccount.Model.Class;
+using StudentAccount.Model.CourseStudent;
 using StudentAccount.Orchestrators.Class;
+using StudentAccount.Orchestrators.CourseStudent;
+using StudentAccount.Platform.BlobStorage;
 
 namespace StudentAccount.Api;
 
@@ -32,11 +35,20 @@ public class Startup
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddScoped<IStudentOrchestrator, StudentOrchestrator>();
         services.AddScoped<IClassOrchestrator, ClassOrchestrator>();
+        services.AddScoped<ICourseStudentOrchestrator, CourseStudentOrchestrator>();
 
         // Dal
         services.AddScoped<IStudentRepository, StudentRepository>();
         services.AddScoped<IClassRepository, ClassRepository>();
         ConfigureDb(services);
+
+        var config = new BlobConfiguration();
+        _configuration.Bind("AzureBlobConnectionString", config);
+
+        services.AddSingleton(config);
+
+        // misc
+        services.AddScoped<IBlobStorage, BlobStorage>();
     }
 
     protected virtual void ConfigureDb(IServiceCollection services)
