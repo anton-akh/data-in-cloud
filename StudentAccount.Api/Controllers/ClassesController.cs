@@ -1,24 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StudentAccount.Model.Class;
 using StudentAccount.Model.Student;
+using StudentAccount.Orchestrators.Class.Contract;
 using StudentAccount.Orchestrators.Student.Contract;
-using System.Threading.Tasks;
 
 namespace StudentAccount.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/students")]
-    public class StudentsController : ControllerBase
+    [Route("api/v1/classes")]
+    public class ClassesController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ILogger<StudentsController> _logger;
-        private readonly IStudentOrchestrator _studentOrchestrator;
+        private readonly ILogger<ClassesController> _logger;
+        private readonly IClassOrchestrator _studentOrchestrator;
 
-        public StudentsController(
+        public ClassesController(
             IMapper mapper,
-            ILogger<StudentsController> logger, 
-            IStudentOrchestrator studentOrchestrator)
+            ILogger<ClassesController> logger,
+            IClassOrchestrator studentOrchestrator)
         {
             _mapper = mapper;
             _logger = logger;
@@ -34,7 +39,7 @@ namespace StudentAccount.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var studentById = await _studentOrchestrator.GetByIdAsync(id);
 
@@ -42,9 +47,9 @@ namespace StudentAccount.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostSync(CreateStudent student)
+        public async Task<IActionResult> PostSync(CreateClass student)
         {
-            var model = _mapper.Map<Student>(student);
+            var model = _mapper.Map<Class>(student);
 
             var result = await _studentOrchestrator.CreateAsync(model);
 
@@ -52,9 +57,9 @@ namespace StudentAccount.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, EditStudent model)
+        public async Task<IActionResult> PutAsync(Guid id, EditClass model)
         {
-            var modelToUpdate = _mapper.Map<Student>(model);
+            var modelToUpdate = _mapper.Map<Class>(model);
             modelToUpdate.Id = id;
 
             var entity = await _studentOrchestrator.UpdateAsync(id, modelToUpdate);
@@ -63,7 +68,7 @@ namespace StudentAccount.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
             var deletedEntity = await _studentOrchestrator.DeleteAsync(id);
 

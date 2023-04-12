@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using StudentAccount.Dal.Class;
 using StudentAccount.Dal.Student;
 
 namespace StudentAccount.Dal
@@ -8,6 +9,9 @@ namespace StudentAccount.Dal
         public DalProfile()
         {
             CreateMap<StudentDao, Model.Student.Student>()
+                .ReverseMap();
+
+            CreateMap<ClassDao, Model.Class.Class>()
                 .ReverseMap();
         }
     }

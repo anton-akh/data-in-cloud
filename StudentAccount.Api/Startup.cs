@@ -7,6 +7,9 @@ using StudentAccount.Model.Student;
 using StudentAccount.Orchestrators.Student;
 using StudentAccount.Platform.Exception;
 using System;
+using StudentAccount.Dal.Class;
+using StudentAccount.Model.Class;
+using StudentAccount.Orchestrators.Class;
 
 namespace StudentAccount.Api;
 
@@ -28,15 +31,18 @@ public class Startup
         // Orchestrator
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddScoped<IStudentOrchestrator, StudentOrchestrator>();
+        services.AddScoped<IClassOrchestrator, ClassOrchestrator>();
 
         // Dal
         services.AddScoped<IStudentRepository, StudentRepository>();
+        services.AddScoped<IClassRepository, ClassRepository>();
         ConfigureDb(services);
     }
 
     protected virtual void ConfigureDb(IServiceCollection services)
     {
         services.AddSqlServer<Dal.AppDbContext>(_configuration.GetConnectionString("DatabaseConnectionString"));
+        services.AddCosmos<Dal.CosmosDbContext>(_configuration.GetConnectionString("CosmosConnectionString")!, "ToDoList");
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

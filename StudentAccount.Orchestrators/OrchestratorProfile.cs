@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using StudentAccount.Orchestrators.Class.Contract;
 using StudentAccount.Orchestrators.Student.Contract;
 
 namespace StudentAccount.Orchestrators
@@ -10,6 +11,9 @@ namespace StudentAccount.Orchestrators
         {
             CreateMap<CreateStudent, Model.Student.Student>();
             CreateMap<EditStudent, Model.Student.Student>();
+
+            CreateMap<CreateClass, Model.Class.Class>();
+            CreateMap<EditClass, Model.Class.Class>();
         }
     }
 }
