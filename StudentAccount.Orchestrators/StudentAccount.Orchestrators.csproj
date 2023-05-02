@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="CourseStudent\" />
     <Folder Include="Student\Contract\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
   </ItemGroup>
 
   <ItemGroup>

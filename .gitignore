@@ -36,3 +36,4 @@
 *.user
 StudentAccount.Database/StudentAccount.Database.dbmdl
 StudentAccount.Database/StudentAccount.Database.jfm
+*.user
