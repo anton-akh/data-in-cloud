@@ -1,4 +1,4 @@
-Practical assignment for Data in Cloud Course
+Practical assignment for Data in Cloud Course (actual on course start time March 31)
 
 ## Practical assignment
 
