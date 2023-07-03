@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="CourseStudent\" />
+    <Folder Include="ClassStatsOrchestrator\" />
     <Folder Include="Student\Contract\" />
   </ItemGroup>
 

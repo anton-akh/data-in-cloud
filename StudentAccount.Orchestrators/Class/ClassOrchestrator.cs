@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using StudentAccount.Model.Class;
+using StudentAccount.Platform.ServiceBus;
 
 namespace StudentAccount.Orchestrators.Class;
 
 public class ClassOrchestrator : IClassOrchestrator
 {
+    private readonly IPublisher _publisher;
     private readonly IClassRepository _repository;
 
     public ClassOrchestrator(
+        IPublisher publisher,
         IClassRepository repository)
     {
+        _publisher = publisher;
         _repository = repository;
     }
 
@@ -27,7 +32,11 @@ public class ClassOrchestrator : IClassOrchestrator
 
     public async Task<Model.Class.Class> CreateAsync(Model.Class.Class model)
     {
-        return await _repository.CreateAsync(model);
+        var entity = await _repository.CreateAsync(model);
+
+        await _publisher.PublishAsync(entity.Id);
+
+        return entity;
     }
 
     public Task<Model.Class.Class> UpdateAsync(Guid id, Model.Class.Class modelToUpdate)
